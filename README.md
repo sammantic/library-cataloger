@@ -25,7 +25,7 @@ $ node index.js add 11 John Android-C++ Programming
 $ node index.js update 11 autherName=Nancy BookName=Android-C++-2ed
 ```
 
-- Update a specific book
+- Delete a specific book
 ```sh
 $ node index.js delete 11 Programming
 ```
