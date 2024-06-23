@@ -18,9 +18,14 @@ $ node index.js list Programming
 ```
 - Add a new book
 ```sh
-$ node index.js add 11 John Android C++ Programming
+$ node index.js add 11 John Android-C++ Programming
 ```
 - Update a specific book
 ```sh
-$ node index.js update 11 autherName=Nancy BookName=Android C++ 2ed
+$ node index.js update 11 autherName=Nancy BookName=Android-C++-2ed
+```
+
+- Update a specific book
+```sh
+$ node index.js delete 11 Programming
 ```
