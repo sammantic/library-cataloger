@@ -34,7 +34,7 @@ switch(args[0]) {
                 Validator.validateBookName(args[3]) &&
                 Validator.isString(args[4])) {
 
-                Commands.addBook(args[1], args[2], args[3], args[4])
+                Commands.addBook(args[1], args[2], args[3], args[4]);
             } else {
                
                 console.log("values are not valid");
@@ -57,17 +57,33 @@ switch(args[0]) {
 
                 console.log('update a book');
                 const newAutherName = Helper.parseAutherNameArgs(args[2]);
-                const newBookName = Helper.parseBookNameArgs(args[3])
+                const newBookName = Helper.parseBookNameArgs(args[3]);
                 Commands.updateBook(args[1], {autherName: newAutherName, bookName: newBookName});
+            } else {
+                console.log("areguments are not valid");
             }
         
         } else {
-            console.log("update <bookId> <auther_name> <book_name>")
+            console.log("update <bookId> <auther_name> <book_name>");
         }
         
         break;
     case 'delete':
-        console.log('delete a book');
+        if (args.length == 3) {
+            args[1] = Number(args[1]);
+            if (Validator.isNumber(args[1]) &&
+                Validator.isString(args[2])) {
+                    Commands.deleteBook(args[1], args[2]);
+                    console.log("Book ID:", args[1], " deleted");
+                } else {
+                    console.log("areguments are not valid");
+                    
+                }
+        } else {
+            console.log("detele <bookId> <category_name>");
+        }
+        
+        
         break;
     default:
         console.log('Helper')
