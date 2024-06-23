@@ -17,7 +17,8 @@ function updateBook(bookID, newDetails) {
     ShelfHandler.updateBookShelf(bookID, newDetails)
 }
 
-function deleteBook(bookID) {
+function deleteBook(bookID, categoryName) {
+    ShelfHandler.deleteBook(bookID, categoryName);
     return "delete a book";
 }
 
