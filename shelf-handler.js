@@ -153,8 +153,44 @@ function updateBookShelf(bookId, newDetails) {
     });
 }
 
+function deleteBook(bookId, categoryName) {
+    fs.readFile(libraryPath, 'utf8', (err, contentFile) => {
+        if (err) {
+            console.log("Error read library file", err);
+            process.exit(1);
+        }
+
+        const contentJson = JSON.parse(contentFile);
+        
+        if (!contentJson['Categories'].hasOwnProperty(categoryName)) {
+            console.log("Category:", categoryName, " is not exist");
+            process.exit(1);
+        }
+
+        if (!contentJson['Categories'][categoryName].hasOwnProperty(bookId)) {
+            console.log("Book Id:", bookId, "is not exits");
+            process.exit(1);
+        }
+
+        // delete a book
+        delete contentJson['Categories'][categoryName][bookId];
+
+        fs.writeFile(libraryPath, JSON.stringify(contentJson), 'utf8', (err) => {
+            if (err) {
+                console.log("Error writing to a library file", err);
+                process.exit(1);
+            }
+            console.log("Library saved");
+        });
+       
+        
+
+    });
+}
+
 module.exports = {
     readAllShelfs,
     addBookToShelf,
     updateBookShelf,
+    deleteBook
 }
